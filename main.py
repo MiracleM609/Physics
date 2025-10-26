@@ -39,14 +39,17 @@ class Game:
         self.ini_v = 0
         self.preset = False
         answer = ""
-        while answer != "Y" and answer != "N":
+        while answer != "Y" and answer != "N" and self.simulation != 4:
             answer = input("Use a preset ? (Y/N): ")
         if  answer =="Y":
             self.preset = True
             print("Preset selected")
             self.preset_choice = presets.choose_preset(self,self.simulation)
-        else:
+        elif self.simulation != 4:
             self.scale = int(input("What scale shall be used? : "))
+        else:
+            self.scale = 1_000_000
+
         if self.simulation >1 and not self.preset:
             self.ini_v = int(input("Define the initial velocity:  : "))
         if self.simulation==4 and not self.preset:
