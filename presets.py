@@ -42,4 +42,3 @@ def load_presets(game,sim,choice):
                 game.scale = .05
                 game.c1.m = 1
                 game.c2.m = 3.78
-
