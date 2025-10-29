@@ -54,7 +54,6 @@ def sim4(self,objs, ini_v):
                 obj2.y += (self.ny[objs.index(obj2)])*self.slow
             except ValueError:
                 print("well")
-            print(self.nx,self.ny)
 #    dx1 = calc.dx(obj1, obj2)
 #    dy1 = calc.dy(obj1, obj2)
 #    dx2 = calc.dx(obj2, obj1)

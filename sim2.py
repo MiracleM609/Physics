@@ -19,8 +19,6 @@ def sim2(self,obj1,obj2, ini_v):
     else:
         #immer um fg ableiten
         self.nx1,self.ny1 = self.nx1 + gx1, self.ny1 + gy1
-    print("Hello",self.nx1, self.ny1)
-
 
     obj1.x -= self.nx1
     obj1.y -= self.ny1
