@@ -5,7 +5,7 @@ import calc,circle
 
 def create_n_objs(n,game):
     for i in range(n):
-        new_obj = circle.Object(game,randint(0,800), randint(0,800), 5, 5,m=randint(1000,10000000),colour="green")
+        new_obj = circle.Object(game,randint(0,800), randint(0,800), 5, 5,m=randint(1000,10_000_000),colour="green")
         game.objs.append(new_obj)
         game.objs_hitbox.append(new_obj.hitbox)
         game.nx.append(0)
@@ -54,7 +54,6 @@ def sim4(self,objs, ini_v):
                 obj2.y += (self.ny[objs.index(obj2)])*self.slow
             except ValueError:
                 print("well")
-            print(self.nx,self.ny)
 #    dx1 = calc.dx(obj1, obj2)
 #    dy1 = calc.dy(obj1, obj2)
 #    dx2 = calc.dx(obj2, obj1)
