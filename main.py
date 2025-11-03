@@ -1,5 +1,11 @@
-import pygame,circle,sim1,sim2,sim3,sim4,presets
+import pygame
 
+import circle
+import presets
+import sim1
+import sim2
+import sim3
+import sim4
 from sim4 import create_n_objs
 
 pygame.init()
@@ -123,7 +129,14 @@ class Game:
 
 simulation = 0
 while simulation not in range(1,5):
-    simulation = int(input("Which simulation shall be started?: "))
+     try:
+        simulation = int(input("Which simulation shall be started?: \n"
+                               "1. Simple simulation of falling objects on planet earth \n"
+                               "2. Simulation of 2 Bodies in Space. One is unmoving \n"
+                               "3. Simulation of 2 Bodies in Space. Both are moving \n"
+                               "4. Simulation of n Bodies in Space.\n" ))
+     except ValueError:
+         print("Invalid input. Please try again.")
 
 game = Game(simulation)
 pygame.quit()
