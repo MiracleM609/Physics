@@ -7,7 +7,7 @@ def choose_preset(game,sim):
     if sim == 2 or sim == 3:
         choice = -1
         while choice not in range(0,4):
-            choice = int(input("Choose a preset: \n1. A big cruise ship with an initial speed of 50_000m/s and a small aircraft carrier without any movement (500_000:1)\n2. A multifamily house with an initial speed of 500_000m/s and a skyscraper (1_000_000:1)\n3. 1 Liter and 1 Gallon of Water (1:20) \nI choose "))
+            choice = int(input("Choose a preset: \n1. A big cruise ship with an initial speed of 50_000m/s and a small aircraft carrier without any movement (500_000:1)\n2. A multifamily house with an initial speed of 500_000m/s and a skyscraper (1_000_000:1)\n3. 100kg of Steal and 100kg of Feathers (1:20) \nI choose "))
         return choice
     return None
 def load_presets(game,sim,choice):
@@ -39,6 +39,7 @@ def load_presets(game,sim,choice):
                 game.c1.m = 2_000_000
                 game.c2.m = 100_000_000
             case 3:
-                game.scale = .05
-                game.c1.m = 1
-                game.c2.m = 3.78
+                game.scale = 1_000_000
+                game.c1.m = 10_000_000
+                game.c2.m = 10_000_000
+                game.ini_v = -0.1
