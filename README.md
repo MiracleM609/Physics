@@ -1,4 +1,4 @@
-# GravitySims
+# Gravity Simulations
 A few Python files to simulate Gravity between Objects
 
   Sim1:
@@ -13,4 +13,4 @@ A few Python files to simulate Gravity between Objects
   Sim4:
       Simulation of n Bodys in Space.
 
-  Currently only Sim4 works without any changes to the code :(
+Using presets is recommended but not necessary
