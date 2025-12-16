@@ -1,4 +1,8 @@
 from math import *
+
+import pygame.mouse
+
+
 def vec_calc(angle, length):
     (dx, dy) = length * cos(radians(angle)), length * sin(radians(angle))
     return dx, dy
@@ -19,6 +23,12 @@ def find_max_m(objs):
         if obj.m > maxm:
             maxm = objs.index(obj)
     return maxm
+
+def get_mouse_movement():
+    if pygame.mouse.get_pressed():
+        return pygame.mouse.get_pos()
+    else:
+        return None
 
 #class Vector:
     #def __init__(self, x, y, length):

@@ -1,5 +1,5 @@
 import pygame
-
+import pyautogui
 import circle
 import presets
 import sim1
@@ -36,7 +36,11 @@ class Game:
         self.running = True
         self.simulation = simulation
         self.preset_choice = 0
+        self.should_change_delta_mouse = False
         self.scale = 0.001
+        self.mouse_pos = (self.width/2, self.height/2)
+        self.delta_mouse_x=0
+        self.delta_mouse_y=0
         self.objs = []
         self.objs_hitbox = []
         #self.objs_hitbox = [self.c1.hitbox, self.c2.hitbox]
@@ -82,9 +86,9 @@ class Game:
         self.d = False
         self.fast =False
         self.slow = 0.1
-
         self.run()
     def run(self):
+        pyautogui.moveTo(self.mouse_pos[0], self.mouse_pos[1])
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:self.running=False
@@ -105,6 +109,17 @@ class Game:
                 self.objs = list(map(edit_x_minus, self.objs))
             if keys[pygame.K_d]:
                 self.objs = list(map(edit_x_plus, self.objs))
+
+            if pygame.mouse.get_pos() != self.mouse_pos and pygame.mouse.get_pressed()[0] and self.should_change_delta_mouse:
+                self.delta_mouse_x = pygame.mouse.get_pos()[0] - self.mouse_pos[0]
+                self.delta_mouse_y = pygame.mouse.get_pos()[1] - self.mouse_pos[1]
+            if pygame.mouse.get_pressed()[0]:
+                self.mouse_pos = pygame.mouse.get_pos()
+                self.objs = list(map(self.apply_delta_mouse, self.objs))
+                self.delta_mouse_x = self.delta_mouse_y = 0
+                self.should_change_delta_mouse = True
+            if not pygame.mouse.get_pressed()[0] and self.should_change_delta_mouse:
+                self.should_change_delta_mouse = False
             self.screen.fill((0,0,0))
             self.update()
             pygame.display.set_caption(f"{self.clock.get_fps()}")
@@ -126,6 +141,12 @@ class Game:
         for obj in self.objs:
             obj.update()
         #pygame.draw.line(self.screen, (255,255,255),(self.c1.x,self.c1.y),(self.c2.x,self.c2.y))
+
+    def apply_delta_mouse(self,obj):
+        #print("delta_mouse_x",self.delta_mouse_x,"delta_mouse_y",self.delta_mouse_y)
+        obj.x += self.delta_mouse_x
+        obj.y += self.delta_mouse_y
+        return obj
 
 simulation = 0
 while simulation not in range(1,5):
