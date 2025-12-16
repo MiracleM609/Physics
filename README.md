@@ -1,5 +1,5 @@
 # Gravity Simulations
-A few Python files to simulate Gravity between Objects
+A few Python files to simulate classical Newtonian Gravity between Objects
 
   Sim1:
       Simple simulation of falling objects on planet earth
